@@ -1,0 +1,4 @@
+/infection.log
+/vendor/
+/.php_cs.cache
+/phpunit.xml

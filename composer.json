@@ -1,0 +1,52 @@
+{
+    "name": "afranio/omie-sdk",
+    "description": "A SDK for Omie ERP",
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "type": "library",
+    "require": {
+        "php":"^7.4",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.2",
+        "infection/infection": "^0.21.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^0.12.81",
+        "friendsofphp/php-cs-fixer": "^2.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omie\\Sdk\\" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omie\\Sdk\\" : "tests"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php56": "*"
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix --verbose --show-progress=estimating",
+        "lint:check": "php-cs-fixer fix --dry-run --verbose --show-progress=estimating",
+        "phpunit": "phpunit",
+        "infection": "infection --threads=4 --initial-tests-php-options=\"-d zend_extension=xdebug.so\"",
+        "test": [
+            "@lint:check",
+            "@phpunit",
+            "@infection"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Afranio Martins",
+            "email": "afranioce@gmail.com"
+        }
+    ]
+}
