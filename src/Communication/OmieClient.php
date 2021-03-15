@@ -9,25 +9,21 @@ use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-final class OmieClient implements OmieClientInterface
+class OmieClient implements OmieClientInterface
 {
     private ClientInterface $client;
 
-    private string $appKey;
-
-    private string $appSecret;
-
     private LoggerInterface $logger;
+
+    private AuthDataInterface $authData;
 
     public function __construct(
         ClientInterface $client,
-        string $appKey,
-        string $appSecret,
+        AuthDataInterface $authData,
         LoggerInterface $logger
     ) {
         $this->client = $client;
-        $this->appKey = $appKey;
-        $this->appSecret = $appSecret;
+        $this->authData = $authData;
         $this->logger = $logger;
     }
 
@@ -47,8 +43,8 @@ final class OmieClient implements OmieClientInterface
                 $uri,
                 [
                     'json' => [
-                        'app_key' => $this->appKey,
-                        'app_secret' => $this->appSecret,
+                        'app_key' => $this->authData->getAppKey(),
+                        'app_secret' => $this->authData->getAppSecret(),
                         'call' => $method,
                         'param' => [$parameters]
                     ]
