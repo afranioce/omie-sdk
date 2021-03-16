@@ -2,7 +2,7 @@
 
 namespace Omie\Sdk\Communication;
 
-interface AuthDataInterface
+interface AccessTokenInterface
 {
     public function getAppKey(): string;
 

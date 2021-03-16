@@ -15,11 +15,11 @@ final class Client extends HttpClient
     private const CLIENT_LOG = "Omie SDK Request: {request}\n\nResponse: {response}\n\nError: {error}";
 
     public function __construct(
-        string $baseUri,
+        UrlInterface $url,
         LoggerInterface $logger,
         array $config = []
     ) {
-        $config['base_uri'] = $baseUri;
+        $config['base_uri'] = $url->getBaseUri();
 
         $handlerStack = $config['handler'] ?? HandlerStack::create();
 

@@ -15,11 +15,11 @@ class OmieClient implements OmieClientInterface
 
     private LoggerInterface $logger;
 
-    private AuthDataInterface $authData;
+    private AccessTokenInterface $authData;
 
     public function __construct(
         ClientInterface $client,
-        AuthDataInterface $authData,
+        AccessTokenInterface $authData,
         LoggerInterface $logger
     ) {
         $this->client = $client;
