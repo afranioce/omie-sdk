@@ -32,7 +32,7 @@ final class ProductService implements ProductServiceInterface
             'filtrar_apenas_omiepdv' => 'N'
         ] + $filter);
 
-        $data = json_decode((string) $response->getBody());
+        $data = json_decode((string) $response->getBody(), true);
 
         return new PagedResult(
             $data['pagina'],

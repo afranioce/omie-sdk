@@ -24,7 +24,7 @@ class OrderService implements OrderServiceInterface
     {
         $response = $this->client->call(self::METHOD_CREATE_ORDER, self::URI, $order->toArray());
 
-        $data = json_decode((string) $response->getBody());
+        $data = json_decode((string) $response->getBody(), true);
 
         $order->setId((int) $data['codigo_pedido']);
         $order->setOrderId(ltrim($data['numero_pedido'], '0'));

@@ -28,7 +28,7 @@ class PriceTableService implements PriceTableServiceInterface
             'nRegPorPagina' => $limit,
         ]);
 
-        $data = json_decode((string) $response->getBody());
+        $data = json_decode((string) $response->getBody(), true);
 
         return new PagedResult(
             $data['nPagina'],

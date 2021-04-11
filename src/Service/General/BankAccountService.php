@@ -26,7 +26,7 @@ class BankAccountService implements BankAccountServiceInterface
             'apenas_importado_api' => 'N',
         ] + $filter);
 
-        $data = json_decode((string) $response->getBody());
+        $data = json_decode((string) $response->getBody(), true);
 
         return new PagedResult(
             $data['pagina'],
