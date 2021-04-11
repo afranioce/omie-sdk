@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Omie\Sdk\Entity\tra;
+namespace Omie\Sdk\Entity;
 
 trait IntegrableTrait
 {
